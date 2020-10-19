@@ -1,0 +1,75 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "@typescript-eslint/no-var-requires": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "import/extensions": 0,
+    "no-mixed-spaces-and-tabs": "off",
+    "no-tabs": ["error", { "allowIndentationTabs": false }],
+    "max-lines": ["error", {"max": 120, "skipBlankLines": true}],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "camelcase": 0,
+    "semi": [2, "never"],
+    "no-console": "off"
+  },
+  "overrides": [
+        {
+            "files": [
+                "__mocks__/**/*.js",
+                "**/*.spec.{js,tsx}"
+            ],
+            "env": {
+                "jest": true
+            },
+            "rules": {
+                "no-restricted-globals": [
+                    "error",
+                    {
+                        "name": "fit",
+                        "message": "Use it instead."
+                    },
+                    {
+                        "name": "fdescribe",
+                        "message": "Use describe instead."
+                    }
+                ],
+                "no-restricted-properties": [
+                    "error",
+                    {
+                        "object": "describe",
+                        "property": "only",
+                        "message": "Use describe instead."
+                    },
+                    {
+                        "object": "it",
+                        "property": "only",
+                        "message": "Use it instead."
+                    },
+                    {
+                        "object": "test",
+                        "property": "only",
+                        "message": "Use test instead."
+                    }
+                ]
+            }
+        }
+    ],
+  "globals": {
+    "jest/globals": true,
+    "graphql": true
+  }
+}

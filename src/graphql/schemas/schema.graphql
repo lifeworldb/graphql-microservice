@@ -1,0 +1,10 @@
+type Query {
+    getUser(id: ID!): User
+    getUsers(limit: Int): [User]
+}
+
+type Mutation {
+    createUser(input: UserInput): User
+    updateUser(input: UserInput): User
+    deleteUser(id: ID!): String
+}
